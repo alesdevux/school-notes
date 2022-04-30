@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -15,7 +16,11 @@ class AssignatureFactory extends Factory {
    */
   public function definition() {
     return [
-      //
+      'name' => $this->faker->name,
+      'description' => $this->faker->text,
+      'curse' => $this->faker->word,
+      'year' => Carbon::now()->year,
+      'user_id' => $this->faker->numberBetween(1, 10),
     ];
   }
 }

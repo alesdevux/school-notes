@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Assignature;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class AssignatureController extends Controller {
   /**
@@ -21,7 +22,7 @@ class AssignatureController extends Controller {
    * @return \Illuminate\Http\Response
    */
   public function create() {
-    //
+    return Inertia::render('Assignatures/Create');
   }
 
   /**
@@ -31,7 +32,18 @@ class AssignatureController extends Controller {
    * @return \Illuminate\Http\Response
    */
   public function store(Request $request) {
-    //
+    $request->validate([
+      'name' => 'required',
+      'description' => 'required',
+      'curse' => 'required',
+      'year' => 'required',
+      'user_id' => 'required',
+    ]);
+
+    $assignature = Assignature::create($request->all());
+    $assignature->save();
+
+    return redirect()->route('assignatures.index');
   }
 
   /**

@@ -13,6 +13,14 @@ return new class extends Migration {
   public function up() {
     Schema::create('assignatures', function (Blueprint $table) {
       $table->id();
+      $table->string('name');
+      $table->string('description');
+      $table->string('curse');
+      $table->integer('year');
+      
+      $table->unsignedBigInteger('user_id');
+      $table->foreign('user_id')->references('id')->on('users');
+      
       $table->timestamps();
     });
   }
