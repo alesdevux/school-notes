@@ -13,6 +13,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+        pop: ['Poppins', ...defaultTheme.fontFamily.sans],
       },
     },
   },
