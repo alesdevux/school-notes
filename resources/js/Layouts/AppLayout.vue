@@ -35,8 +35,8 @@ const logout = () => {
 
     <JetBanner />
 
-    <div class="min-h-screen bg-gray-100">
-      <nav class="bg-white border-b border-gray-100">
+    <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+      <nav class="bg-white border-b border-gray-100 dark:bg-gray-800 dark:text-white dark:border-gray-700">
         <!-- Primary Navigation Menu -->
         <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div class="flex justify-between h-16">
@@ -63,7 +63,7 @@ const logout = () => {
                   <template #trigger>
                     <span class="inline-flex rounded-md">
                       <button type="button"
-                        class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition bg-white border border-transparent rounded-md hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50">
+                        class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition bg-white border-transparent rounded-md bordebggrr dark:bg-gray-800 dark:text-white hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50">
                         {{ $page.props.user.current_team.name }}
 
                         <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
@@ -125,14 +125,14 @@ const logout = () => {
                 <JetDropdown align="right" width="48">
                   <template #trigger>
                     <button v-if="$page.props.jetstream.managesProfilePhotos"
-                      class="flex text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
+                      class="flex text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-900">
                       <img class="object-cover w-8 h-8 rounded-full" :src="$page.props.user.profile_photo_url"
                         :alt="$page.props.user.name">
                     </button>
 
                     <span v-else class="inline-flex rounded-md">
                       <button type="button"
-                        class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition bg-white border border-transparent rounded-md hover:text-gray-700 focus:outline-none">
+                        class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition bg-white border border-transparent rounded-md hover:text-gray-700 focus:outline-none dark:bg-gray-800 dark:text-white dark:hover:bg-gray-900">
                         {{ $page.props.user.name }}
 
                         <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
@@ -147,7 +147,7 @@ const logout = () => {
 
                   <template #content>
                     <!-- Account Management -->
-                    <div class="block px-4 py-2 text-xs text-gray-400">
+                    <div class="block px-4 py-2 text-xs text-gray-400 dark:bg-gray-800 dark:text-white">
                       Manage Account
                     </div>
 
@@ -159,7 +159,7 @@ const logout = () => {
                       API Tokens
                     </JetDropdownLink>
 
-                    <div class="border-t border-gray-100" />
+                    <div class="border-t border-gray-100 dark:border-gray-500" />
 
                     <!-- Authentication -->
                     <form @submit.prevent="logout">
@@ -278,7 +278,7 @@ const logout = () => {
       </nav>
 
       <!-- Page Heading -->
-      <header v-if="$slots.header" class="bg-white shadow">
+      <header v-if="$slots.header" class="bg-white shadow dark:bg-gray-800 dark:text-white">
         <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <slot name="header" />
         </div>

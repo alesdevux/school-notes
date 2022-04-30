@@ -22482,7 +22482,7 @@ __webpack_require__.r(__webpack_exports__);
     expose();
     var props = __props;
     var classes = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(function () {
-      return props.active ? 'inline-flex items-center px-1 pt-1 border-b-2 border-secondary-400 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-secondary-700 transition' : 'inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition';
+      return props.active ? 'inline-flex items-center px-1 pt-1 border-b-2 border-secondary-400 text-sm font-medium leading-5 text-gray-900 dark:text-white focus:outline-none focus:border-secondary-700 transition' : 'inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 dark:text-gray-200 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition';
     });
     var __returned__ = {
       props: props,
@@ -24877,7 +24877,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "relative"
+  "class": "relative dark:bg-gray-800 dark:text-white"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
@@ -24901,7 +24901,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["absolute z-50 mt-2 rounded-md shadow-lg", [$setup.widthClass, $setup.alignmentClasses]]),
+        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["absolute z-50 mt-2 rounded-md shadow-lg dark:bg-gray-800 dark:text-white", [$setup.widthClass, $setup.alignmentClasses]]),
         style: {
           "display": "none"
         },
@@ -24909,7 +24909,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           return $setup.open = false;
         })
       }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["rounded-md ring-1 ring-black ring-opacity-5", $props.contentClasses])
+        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["rounded-md ring-1 ring-black ring-opacity-5 dark:bg-gray-800 dark:text-white", $props.contentClasses])
       }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "content")], 2
       /* CLASS */
       )], 2
@@ -24940,20 +24940,20 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = {
   key: 0,
   type: "submit",
-  "class": "block w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 transition hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
+  "class": "block w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 transition hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-900"
 };
 var _hoisted_2 = ["href"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [$props.as == 'button' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")])) : $props.as == 'a' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
     key: 1,
     href: $props.href,
-    "class": "block px-4 py-2 text-sm leading-5 text-gray-700 transition hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
+    "class": "block px-4 py-2 text-sm leading-5 text-gray-700 transition hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-900"
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")], 8
   /* PROPS */
   , _hoisted_2)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["Link"], {
     key: 2,
     href: $props.href,
-    "class": "block px-4 py-2 text-sm leading-5 text-gray-700 transition hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
+    "class": "block px-4 py-2 text-sm leading-5 text-gray-700 transition hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-900"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")];
@@ -25420,10 +25420,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "min-h-screen bg-gray-100"
+  "class": "min-h-screen bg-gray-100 dark:bg-gray-900"
 };
 var _hoisted_2 = {
-  "class": "bg-white border-b border-gray-100"
+  "class": "bg-white border-b border-gray-100 dark:bg-gray-800 dark:text-white dark:border-gray-700"
 };
 var _hoisted_3 = {
   "class": "px-4 mx-auto max-w-7xl sm:px-6 lg:px-8"
@@ -25454,7 +25454,7 @@ var _hoisted_11 = {
 };
 var _hoisted_12 = {
   type: "button",
-  "class": "inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition bg-white border border-transparent rounded-md hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50"
+  "class": "inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition bg-white border-transparent rounded-md bordebggrr dark:bg-gray-800 dark:text-white hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50"
 };
 
 var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
@@ -25523,7 +25523,7 @@ var _hoisted_25 = {
 };
 var _hoisted_26 = {
   key: 0,
-  "class": "flex text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300"
+  "class": "flex text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-900"
 };
 var _hoisted_27 = ["src", "alt"];
 var _hoisted_28 = {
@@ -25532,7 +25532,7 @@ var _hoisted_28 = {
 };
 var _hoisted_29 = {
   type: "button",
-  "class": "inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition bg-white border border-transparent rounded-md hover:text-gray-700 focus:outline-none"
+  "class": "inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition bg-white border border-transparent rounded-md hover:text-gray-700 focus:outline-none dark:bg-gray-800 dark:text-white dark:hover:bg-gray-900"
 };
 
 var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
@@ -25549,7 +25549,7 @@ var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "block px-4 py-2 text-xs text-gray-400"
+  "class": "block px-4 py-2 text-xs text-gray-400 dark:bg-gray-800 dark:text-white"
 }, " Manage Account ", -1
 /* HOISTED */
 );
@@ -25559,7 +25559,7 @@ var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNo
 var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" API Tokens ");
 
 var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "border-t border-gray-100"
+  "class": "border-t border-gray-100 dark:border-gray-500"
 }, null, -1
 /* HOISTED */
 );
@@ -25664,7 +25664,7 @@ var _hoisted_61 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 var _hoisted_62 = [_hoisted_61];
 var _hoisted_63 = {
   key: 0,
-  "class": "bg-white shadow"
+  "class": "bg-white shadow dark:bg-gray-800 dark:text-white"
 };
 var _hoisted_64 = {
   "class": "px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8"
@@ -27232,7 +27232,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "text-xl font-semibold leading-tight text-gray-800"
+  "class": "text-xl font-semibold leading-tight text-gray-800 dark:text-white"
 };
 var _hoisted_2 = {
   "class": "py-12"
@@ -28306,7 +28306,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
-  "class": "text-xl font-semibold leading-tight text-gray-800"
+  "class": "text-xl font-semibold leading-tight text-gray-800 dark:text-white"
 }, " Profile ", -1
 /* HOISTED */
 );
@@ -28429,11 +28429,11 @@ var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNod
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Register ");
 
 var _hoisted_6 = {
-  "class": "max-w-6xl pt-16 mx-auto text-white sm:px-6 lg:px-8"
+  "class": "max-w-6xl pt-16 mx-auto dark:text-white sm:px-6 lg:px-8"
 };
 
 var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
-  "class": "mb-12 text-4xl font-black text-white underline uppercase decoration-primary-500 underline-offset-8"
+  "class": "mb-12 text-4xl font-black underline uppercase decoration-primary-500 underline-offset-8"
 }, " School Notes ", -1
 /* HOISTED */
 );

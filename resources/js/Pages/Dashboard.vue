@@ -6,7 +6,7 @@ import Welcome from '@/Jetstream/Welcome.vue';
 <template>
   <AppLayout title="Dashboard">
     <template #header>
-      <h2 class="text-xl font-semibold leading-tight text-gray-800">
+      <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-white">
         Dashboard {{ user.role }}
       </h2>
     </template>

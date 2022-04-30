@@ -29,8 +29,8 @@ defineProps({
       </template>
     </div>
 
-    <div class="max-w-6xl pt-16 mx-auto text-white sm:px-6 lg:px-8">
-      <h1 class="mb-12 text-4xl font-black text-white underline uppercase decoration-primary-500 underline-offset-8">
+    <div class="max-w-6xl pt-16 mx-auto dark:text-white sm:px-6 lg:px-8">
+      <h1 class="mb-12 text-4xl font-black underline uppercase decoration-primary-500 underline-offset-8">
         School Notes
       </h1>
       <div v-if="canLogin">

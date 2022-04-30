@@ -47,7 +47,7 @@ const alignmentClasses = computed(() => {
 </script>
 
 <template>
-  <div class="relative">
+  <div class="relative dark:bg-gray-800 dark:text-white">
     <div @click="open = !open">
       <slot name="trigger" />
     </div>
@@ -58,9 +58,9 @@ const alignmentClasses = computed(() => {
     <transition enter-active-class="transition duration-200 ease-out" enter-from-class="transform scale-95 opacity-0"
       enter-to-class="transform scale-100 opacity-100" leave-active-class="transition duration-75 ease-in"
       leave-from-class="transform scale-100 opacity-100" leave-to-class="transform scale-95 opacity-0">
-      <div v-show="open" class="absolute z-50 mt-2 rounded-md shadow-lg" :class="[widthClass, alignmentClasses]"
+      <div v-show="open" class="absolute z-50 mt-2 rounded-md shadow-lg dark:bg-gray-800 dark:text-white" :class="[widthClass, alignmentClasses]"
         style="display: none;" @click="open = false">
-        <div class="rounded-md ring-1 ring-black ring-opacity-5" :class="contentClasses">
+        <div class="rounded-md ring-1 ring-black ring-opacity-5 dark:bg-gray-800 dark:text-white" :class="contentClasses">
           <slot name="content" />
         </div>
       </div>
