@@ -1,5 +1,6 @@
 <script setup>
 import { Head, Link } from '@inertiajs/inertia-vue3';
+import LinkButton from '../Components/LinkButton.vue';
 
 defineProps({
   canLogin: Boolean,
@@ -29,22 +30,20 @@ defineProps({
     </div>
 
     <div class="max-w-6xl pt-16 mx-auto text-white sm:px-6 lg:px-8">
-      <h1 class="mb-4 text-4xl font-black text-white uppercase">
+      <h1 class="mb-12 text-4xl font-black text-white underline uppercase decoration-primary-500 underline-offset-8">
         School Notes
       </h1>
       <div v-if="canLogin">
-        <p v-if="$page.props.user">Hi {{ $page.props.user.name }}!</p>
+        <p v-if="$page.props.user">Hi <span class="font-bold text-primary-500">{{ $page.props.user.name }}</span>!</p>
         <p class="text-lg">
           Welcome to School Notes, a simple, open-source notes app for school.
         </p>
-        <Link v-if="$page.props.user" :href="route('dashboard')"
-          class="flex px-6 py-2 mt-6 ml-auto font-bold rounded-md bg-emerald-500 hover:bg-emerald-700 w-fit">
+        <LinkButton v-if="$page.props.user" :href="route('dashboard')" class="ml-auto">
           Go to Dashboard
-        </Link>
-        <Link v-if="!$page.props.user" :href="route('login')"
-          class="flex px-6 py-2 mt-6 ml-auto font-bold rounded-md bg-emerald-500 hover:bg-emerald-700 w-fit">
+        </LinkButton>
+        <LinkButton v-if="!$page.props.user" :href="route('login')" class="ml-auto">
           Log in
-        </Link>
+        </LinkButton>
       </div>
     </div>
   </div>
