@@ -3,7 +3,7 @@ import JetApplicationLogo from '@/Jetstream/ApplicationLogo.vue';
 </script>
 
 <template>
-  <div>
+  <!-- <div>
     <div class="p-6 bg-white border-b border-gray-200 sm:px-20">
       <div>
         <JetApplicationLogo class="block w-auto h-12" />
@@ -44,10 +44,10 @@ import JetApplicationLogo from '@/Jetstream/ApplicationLogo.vue';
           </div>
 
           <a href="https://laravel.com/docs">
-            <div class="flex items-center mt-3 text-sm font-semibold text-indigo-700">
+            <div class="flex items-center mt-3 text-sm font-semibold text-secondary-700">
               <div>Explore the documentation</div>
 
-              <div class="ml-1 text-indigo-500">
+              <div class="ml-1 text-secondary-500">
                 <svg viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
                   <path fill-rule="evenodd"
                     d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
@@ -79,10 +79,10 @@ import JetApplicationLogo from '@/Jetstream/ApplicationLogo.vue';
           </div>
 
           <a href="https://laracasts.com">
-            <div class="flex items-center mt-3 text-sm font-semibold text-indigo-700">
+            <div class="flex items-center mt-3 text-sm font-semibold text-secondary-700">
               <div>Start watching Laracasts</div>
 
-              <div class="ml-1 text-indigo-500">
+              <div class="ml-1 text-secondary-500">
                 <svg viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
                   <path fill-rule="evenodd"
                     d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
@@ -136,5 +136,6 @@ import JetApplicationLogo from '@/Jetstream/ApplicationLogo.vue';
         </div>
       </div>
     </div>
-  </div>
+  </div> 
+  -->
 </template>

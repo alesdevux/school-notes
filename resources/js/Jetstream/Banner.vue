@@ -13,12 +13,12 @@ watch(message, async () => {
 
 <template>
   <div>
-    <div v-if="show && message" :class="{ 'bg-indigo-500': style == 'success', 'bg-red-700': style == 'danger' }">
+    <div v-if="show && message" :class="{ 'bg-secondary-500': style == 'success', 'bg-red-700': style == 'danger' }">
       <div class="max-w-screen-xl px-3 py-2 mx-auto sm:px-6 lg:px-8">
         <div class="flex flex-wrap items-center justify-between">
           <div class="flex items-center flex-1 w-0 min-w-0">
             <span class="flex p-2 rounded-lg"
-              :class="{ 'bg-indigo-600': style == 'success', 'bg-red-600': style == 'danger' }">
+              :class="{ 'bg-secondary-600': style == 'success', 'bg-red-600': style == 'danger' }">
               <svg v-if="style == 'success'" class="w-5 h-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
                 viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -39,7 +39,7 @@ watch(message, async () => {
 
           <div class="shrink-0 sm:ml-3">
             <button type="button" class="flex p-2 -mr-1 transition rounded-md focus:outline-none sm:-mr-2"
-              :class="{ 'hover:bg-indigo-600 focus:bg-indigo-600': style == 'success', 'hover:bg-red-600 focus:bg-red-600': style == 'danger' }"
+              :class="{ 'hover:bg-secondary-600 focus:bg-secondary-600': style == 'success', 'hover:bg-red-600 focus:bg-red-600': style == 'danger' }"
               aria-label="Dismiss" @click.prevent="show = false">
               <svg class="w-5 h-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor">
