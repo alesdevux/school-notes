@@ -445,7 +445,6 @@ select {
   background-size: 1.5em 1.5em;
   padding-right: 2.5rem;
   -webkit-print-color-adjust: exact;
-     -moz-print-color-adjust: exact;
           color-adjust: exact;
 }
 
@@ -456,7 +455,6 @@ select {
   background-size: initial;
   padding-right: 0.75rem;
   -webkit-print-color-adjust: unset;
-     -moz-print-color-adjust: unset;
           color-adjust: unset;
 }
 
@@ -466,7 +464,6 @@ select {
           appearance: none;
   padding: 0;
   -webkit-print-color-adjust: exact;
-     -moz-print-color-adjust: exact;
           color-adjust: exact;
   display: inline-block;
   vertical-align: middle;

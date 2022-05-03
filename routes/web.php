@@ -2,9 +2,7 @@
 
 use App\Http\Controllers\AssignatureController;
 use App\Http\Controllers\PageController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------

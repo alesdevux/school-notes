@@ -63,7 +63,7 @@ class AssignatureController extends Controller {
    * @return \Illuminate\Http\Response
    */
   public function edit(Assignature $assignature) {
-    //
+    return Inertia::render('Assignatures/Edit', $assignature);
   }
 
   /**
@@ -74,7 +74,17 @@ class AssignatureController extends Controller {
    * @return \Illuminate\Http\Response
    */
   public function update(Request $request, Assignature $assignature) {
-    //
+    $request->validate([
+      'name' => 'required',
+      'description' => 'required',
+      'curse' => 'required',
+      'year' => 'required',
+      'user_id' => 'required',
+    ]);
+
+    $assignature->update($request->all());
+
+    return redirect()->route('assignatures.index');
   }
 
   /**
