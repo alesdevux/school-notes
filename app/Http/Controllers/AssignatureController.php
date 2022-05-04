@@ -94,6 +94,7 @@ class AssignatureController extends Controller {
    * @return \Illuminate\Http\Response
    */
   public function destroy(Assignature $assignature) {
-    //
+    Assignature::destroy($assignature->id);
+    return redirect()->route('assignatures.index');
   }
 }

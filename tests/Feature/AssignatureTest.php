@@ -72,4 +72,32 @@ class AssignatureTest extends TestCase {
     ]);
     $response->assertRedirect('/assignatures');
   }
+
+  public function test_assignature_can_be_deleted() {
+    $this->withoutExceptionHandling();
+
+    $user = User::factory()->create([ 'id' => 12 ]);
+    $login = Auth::loginUsingId($user->id);
+    $this->actingAs($login);
+
+    $assignature = Assignature::factory()->create([
+      'name' => 'Test Assignature Deleted',
+      'description' => 'Test Description Deleted',
+      'curse' => 'Test Curse',
+      'year' => Carbon::now()->year,
+      'user_id' => 12,
+    ]);
+
+    $response = $this->delete(route('assignatures.destroy', $assignature->id));
+
+    $response->assertStatus(302);
+    $this->assertDatabaseMissing('assignatures', [
+      'name' => 'Test Assignature Deleted',
+      'description' => 'Test Description Deleted',
+      'curse' => 'Test Curse',
+      'year' => Carbon::now()->year,
+      'user_id' => 12,
+    ]);
+    $response->assertRedirect('/assignatures');
+  }
 }
