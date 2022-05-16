@@ -13,6 +13,15 @@ return new class extends Migration {
   public function up() {
     Schema::create('students', function (Blueprint $table) {
       $table->id();
+      $table->string('course');
+      $table->float('first_trimester');
+      $table->float('second_trimester');
+      $table->float('third_trimester');
+      $table->float('final_grade');
+
+      $table->unsignedBigInteger('user_id');
+      $table->foreign('user_id')->references('id')->on('users');
+      
       $table->timestamps();
     });
   }

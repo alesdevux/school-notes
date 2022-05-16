@@ -13,6 +13,11 @@ return new class extends Migration {
   public function up() {
     Schema::create('exams', function (Blueprint $table) {
       $table->id();
+      $table->date('date');
+
+      $table->unsignedBigInteger('assignature_id');
+      $table->foreign('assignature_id')->references('id')->on('assignatures');
+      
       $table->timestamps();
     });
   }
