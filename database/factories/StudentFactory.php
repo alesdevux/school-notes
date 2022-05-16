@@ -15,7 +15,12 @@ class StudentFactory extends Factory {
    */
   public function definition() {
     return [
-      //
+      'course' => $this->faker->word,
+      'first_trimester' => $this->faker->randomFloat(1, 0, 10),
+      'second_trimester' => $this->faker->randomFloat(1, 0, 10),
+      'third_trimester' => $this->faker->randomFloat(1, 0, 10),
+      'final_grade' => $this->faker->randomFloat(1, 0, 10),
+      'user_id' => $this->faker->numberBetween(1, 10),
     ];
   }
 }

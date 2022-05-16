@@ -15,7 +15,8 @@ class ExamFactory extends Factory {
    */
   public function definition() {
     return [
-      //
+      'date' => $this->faker->date(),
+      'assignature_id' => $this->faker->numberBetween(1, 4),
     ];
   }
 }

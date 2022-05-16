@@ -27,6 +27,9 @@ class User extends Authenticatable {
     'second_name',
     'email',
     'password',
+    'is_professor',
+    'is_tutor',
+    'is_admin',
   ];
 
   /**

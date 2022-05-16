@@ -15,7 +15,9 @@ class NoteFactory extends Factory {
    */
   public function definition() {
     return [
-      //
+      'note' => $this->faker->randomFloat(1,0, 10),
+      'student_id' => $this->faker->numberBetween(1, 2),
+      'exam_id' => $this->faker->numberBetween(1, 10),
     ];
   }
 }

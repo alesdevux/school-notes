@@ -7,4 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Exam extends Model {
   use HasFactory;
+
+  protected $fillable = [
+    'date',
+    'assignature_id',
+  ];
 }

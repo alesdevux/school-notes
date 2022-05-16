@@ -2,7 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\Assignature;
+use App\Models\Exam;
+use App\Models\Note;
+use App\Models\Student;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -28,9 +33,80 @@ class DatabaseSeeder extends Seeder {
       'email' => 'tutor1@gmail.com',
       'is_tutor' => true,
     ]);
-    User::factory()->create([
-      'name' => 'user1',
-      'email' => 'user1@gmail.com'
+    Student::factory()->create([
+      'user_id' => User::factory()->create([
+        'name' => 'user1',
+        'email' => 'user1@gmail.com'
+      ])->id,
+    ]);
+    Student::factory()->create([
+      'user_id' => User::factory()->create([
+        'name' => 'user2',
+        'email' => 'user2@gmail.com'
+      ])->id,
+    ]);
+
+    Assignature::factory()->create([
+      'name' => 'Maths',
+      'user_id' => User::where('name', 'professor1')->first()->id,
+    ]);
+    Assignature::factory()->create([
+      'name' => 'English',
+      'user_id' => User::factory()->create([
+        'name' => 'professor2',
+        'email' => 'professor2@gmail.com',
+      ])->id,
+    ]);
+    Assignature::factory()->create([
+      'name' => 'Physics',
+      'user_id' => User::factory()->create([
+        'name' => 'professor3',
+        'email' => 'professor3@gmail.com',
+      ])->id,
+    ]);
+    Assignature::factory()->create([
+      'name' => 'Biology',
+      'user_id' => User::where('name', 'professor1')->first()->id,
+    ]);
+
+    Exam::factory()->create([
+      'date' => Carbon::now()->addDays(6),
+      'assignature_id' => Assignature::where('name', 'Maths')->first()->id,
+    ]);
+    Exam::factory()->create([
+      'date' => Carbon::now()->addDays(7),
+      'assignature_id' => Assignature::where('name', 'English')->first()->id,
+    ]);
+    Exam::factory()->create([
+      'date' => Carbon::now()->addDays(4),
+      'assignature_id' => Assignature::where('name', 'Physics')->first()->id,
+    ]);
+    Exam::factory()->create([
+      'date' => Carbon::now()->addDays(7),
+      'assignature_id' => Assignature::where('name', 'Biology')->first()->id,
+    ]);
+
+    Note::factory()->create([
+      'student_id' => Student::where('user_id', User::where('name', 'user1')->first()->id)->first()->id,
+      'exam_id' => Exam::factory()->create([
+        'date' => Carbon::now()->subDays(6),
+        'assignature_id' => Assignature::where('name', 'Maths')->first()->id,
+      ])->id,
+    ]);
+    Note::factory()->create([
+      'student_id' => Student::where('user_id', User::where('name', 'user2')->first()->id)->first()->id,
+      'exam_id' => Exam::factory()->create([
+        'date' => Carbon::now()->subDays(7),
+        'assignature_id' => Assignature::where('name', 'English')->first()->id,
+      ])->id,
+    ]);
+    Note::factory()->create([
+      'student_id' => Student::where('user_id', User::where('name', 'user1')->first()->id)->first()->id,
+      'exam_id' => Exam::where('assignature_id', Assignature::where('name', 'Physics')->first()->id)->first()->id,
+    ]);
+    Note::factory()->create([
+      'student_id' => Student::where('user_id', User::where('name', 'user2')->first()->id)->first()->id,
+      'exam_id' => Exam::where('assignature_id', Assignature::where('name', 'Biology')->first()->id)->first()->id,
     ]);
   }
 }
