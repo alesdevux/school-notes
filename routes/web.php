@@ -26,4 +26,5 @@ Route::middleware([
 
   Route::resource('assignatures', AssignatureController::class);
   Route::get('/assignatures', [AssignatureController::class, 'index'])->name('assignatures.index');
+  Route::get('/assignatures/create', [AssignatureController::class, 'create'])->name('assignatures.create');
 });
