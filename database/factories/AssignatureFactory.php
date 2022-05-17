@@ -18,7 +18,7 @@ class AssignatureFactory extends Factory {
     return [
       'name' => $this->faker->name,
       'description' => $this->faker->text,
-      'curse' => $this->faker->word,
+      'course' => $this->faker->randomElement(['1 ESO', '2 ESO', '3 ESO', '4 ESO', '1 BATX', '2 BATX']),
       'year' => Carbon::now()->year,
       'user_id' => $this->faker->numberBetween(1, 10),
     ];

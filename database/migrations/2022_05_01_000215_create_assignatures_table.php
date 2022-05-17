@@ -15,7 +15,7 @@ return new class extends Migration {
       $table->id();
       $table->string('name');
       $table->string('description');
-      $table->string('curse');
+      $table->string('course');
       $table->integer('year');
       
       $table->unsignedBigInteger('user_id');
