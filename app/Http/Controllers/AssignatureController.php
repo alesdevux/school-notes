@@ -13,7 +13,10 @@ class AssignatureController extends Controller {
    * @return \Illuminate\Http\Response
    */
   public function index() {
-    //
+    $assignatures = Assignature::all();
+    return Inertia::render('Assignatures/Index', [
+      'assignatures' => $assignatures,
+    ]);
   }
 
   /**
@@ -53,7 +56,7 @@ class AssignatureController extends Controller {
    * @return \Illuminate\Http\Response
    */
   public function show(Assignature $assignature) {
-    //
+    return Inertia::render('Assignatures/Show', $assignature);
   }
 
   /**

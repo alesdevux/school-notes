@@ -25,4 +25,5 @@ Route::middleware([
   Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
 
   Route::resource('assignatures', AssignatureController::class);
+  Route::get('/assignatures', [AssignatureController::class, 'index'])->name('assignatures.index');
 });

@@ -49,9 +49,24 @@ const logout = () => {
               </div>
 
               <!-- Navigation Links -->
-              <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+              <div class="hidden space-x-8 sm:-my-px sm:ml-5 sm:flex">
                 <JetNavLink :href="route('dashboard')" :active="route().current('dashboard')">
                   Dashboard
+                </JetNavLink>
+              </div>
+              <div class="hidden space-x-8 sm:-my-px sm:ml-5 sm:flex">
+                <JetNavLink :href="route('assignatures.index')" :active="route().current('assignatures.*')">
+                  Assignatures
+                </JetNavLink>
+              </div>
+              <div v-if="$page.props.user.is_admin || $page.props.user.is_tutor || $page.props.user.is_professor" class="hidden space-x-8 sm:-my-px sm:ml-5 sm:flex">
+                <JetNavLink :href="route('assignatures.index')" :active="route().current('users.*')">
+                  Students
+                </JetNavLink>
+              </div>
+              <div v-if="!$page.props.user.is_admin || !$page.props.user.is_tutor || !$page.props.user.is_professor" class="hidden space-x-8 sm:-my-px sm:ml-5 sm:flex">
+                <JetNavLink :href="route('assignatures.index')" :active="route().current('users.*')">
+                  Professors
                 </JetNavLink>
               </div>
             </div>
@@ -285,7 +300,7 @@ const logout = () => {
       </header>
 
       <!-- Page Content -->
-      <main>
+      <main class="py-12 mx-auto overflow-hidden shadow-xl max-w-7xl sm:px-6 lg:px-8 sm:rounded-lg dark:text-white">
         <slot />
       </main>
     </div>
