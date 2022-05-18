@@ -16,4 +16,12 @@ class Student extends Model {
     'final_grade',
     'user_id',
   ];
+  
+  public function user() {
+    return $this->belongsTo(User::class);
+  }
+  
+  public function notes() {
+    return $this->hasMany(Note::class);
+  }
 }

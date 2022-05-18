@@ -12,4 +12,12 @@ class Exam extends Model {
     'date',
     'assignature_id',
   ];
+  
+  public function assignature() {
+    return $this->belongsTo(Assignature::class);
+  }
+  
+  public function notes() {
+    return $this->hasMany(Note::class);
+  }
 }

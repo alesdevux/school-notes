@@ -13,4 +13,12 @@ class Note extends Model {
     'student_id',
     'exam_id',
   ];
+  
+  public function student() {
+    return $this->belongsTo(Student::class);
+  }
+  
+  public function exam() {
+    return $this->belongsTo(Exam::class);
+  }
 }

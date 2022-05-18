@@ -15,4 +15,12 @@ class Assignature extends Model {
     'year',
     'user_id',
   ];
+  
+  public function user() {
+    return $this->belongsTo(User::class);
+  }
+  
+  public function exams() {
+    return $this->hasMany(Exam::class);
+  }
 }
