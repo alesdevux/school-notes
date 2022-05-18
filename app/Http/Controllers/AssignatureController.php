@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Assignature;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -13,7 +14,7 @@ class AssignatureController extends Controller {
    * @return \Illuminate\Http\Response
    */
   public function index() {
-    $assignatures = Assignature::all();
+    $assignatures = Assignature::with('user')->get();
     return Inertia::render('Assignatures/Index', [
       'assignatures' => $assignatures,
     ]);

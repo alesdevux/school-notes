@@ -30,7 +30,7 @@ import Table from '@/Components/Table.vue';
             <a href="">edit</a>
           </td>
           <td class="px-3 py-2 bg-slate-700">{{ assignature.name }}</td>
-          <td class="px-3 py-2 whitespace-nowrap">{{ assignature.user_id }}</td>
+          <td class="px-3 py-2 whitespace-nowrap">{{ assignature.user.second_name }}, {{ assignature.user.name }}</td>
           <td class="px-3 py-2 text-center">{{ assignature.course }}</td>
           <td class="px-3 py-2 text-center">{{ assignature.year }}</td>
           <td class="px-3 py-2 whitespace-nowrap">{{ assignature.description }}</td>
@@ -42,6 +42,9 @@ import Table from '@/Components/Table.vue';
 
 <script>
 export default {
-  props: ['assignatures'],
+  props: [
+    'assignatures',
+    'professors',
+  ],
 }
 </script>

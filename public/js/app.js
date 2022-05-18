@@ -22976,7 +22976,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_LinkButton_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Components/LinkButton.vue */ "./resources/js/Components/LinkButton.vue");
 /* harmony import */ var _Components_Table_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Components/Table.vue */ "./resources/js/Components/Table.vue");
 var __default__ = {
-  props: ['assignatures']
+  props: ['assignatures', 'professors']
 };
 
 
@@ -26809,7 +26809,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               key: assignature
             }, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(assignature.name), 1
             /* TEXT */
-            ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(assignature.user_id), 1
+            ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(assignature.user.second_name) + ", " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(assignature.user.name), 1
             /* TEXT */
             ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(assignature.course), 1
             /* TEXT */
