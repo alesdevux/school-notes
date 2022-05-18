@@ -1,6 +1,6 @@
 <template>
   <div class="overflow-x-auto text-slate-200">
-    <table class="py-2 inline-block min-w-full lg:px-8 text-sm font-medium px-6 text-left">
+    <table class="inline-block min-w-full text-sm font-medium text-left">
       <thead class="bg-slate-600">
         <tr>
           <slot name="header"></slot>
