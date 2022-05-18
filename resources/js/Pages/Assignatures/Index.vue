@@ -14,29 +14,30 @@ import Table from '@/Components/Table.vue';
         Create assignature
       </LinkButton>
     </template>
-
-    <Table>
+    
+    <Table v-if="assignatures.length !== 0">
       <template #header>
-        <th class="px-3 py-2"></th>
+        <th class="px-3 py-2" v-if="$page.props.user.is_professor || $page.props.user.is_admin"></th>
         <th class="px-3 py-2">Assignature</th>
-        <th class="px-3 py-2">Professor</th>
-        <th class="px-3 py-2">Course</th>
+        <th class="px-3 py-2" v-if="!$page.props.user.is_professor">Professor</th>
+        <th class="px-3 py-2" v-if="$page.props.user.is_admin || $page.props.user.is_professor">Course</th>
         <th class="px-3 py-2">Year</th>
         <th class="px-3 py-2">Description</th>
       </template>
       <template #body>
         <tr v-for="assignature in assignatures" :key="assignature">
-          <td class="px-3 py-2">
+          <td class="px-3 py-2" v-if="$page.props.user.is_professor || $page.props.user.is_admin">
             <a href="">edit</a>
           </td>
           <td class="px-3 py-2 bg-slate-700">{{ assignature.name }}</td>
-          <td class="px-3 py-2 whitespace-nowrap">{{ assignature.user.second_name }}, {{ assignature.user.name }}</td>
-          <td class="px-3 py-2 text-center">{{ assignature.course }}</td>
+          <td class="px-3 py-2 whitespace-nowrap" v-if="!$page.props.user.is_professor">{{ assignature.user.second_name }}, {{ assignature.user.name }}</td>
+          <td class="px-3 py-2 text-center" v-if="$page.props.user.is_admin || $page.props.user.is_professor">{{ assignature.course.name }}</td>
           <td class="px-3 py-2 text-center">{{ assignature.year }}</td>
           <td class="px-3 py-2 whitespace-nowrap">{{ assignature.description }}</td>
         </tr>
       </template>
     </Table>
+    <p v-else>You don't have assignatures assigned</p>
   </AppLayout>
 </template>
 
@@ -44,7 +45,6 @@ import Table from '@/Components/Table.vue';
 export default {
   props: [
     'assignatures',
-    'professors',
   ],
 }
 </script>
