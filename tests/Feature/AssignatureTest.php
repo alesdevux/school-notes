@@ -23,7 +23,7 @@ class AssignatureTest extends TestCase {
     $response = $this->post(route('assignatures.store'), [
       'name' => 'Test Assignature',
       'description' => 'Test Description',
-      'curse' => 'Test Curse',
+      'course' => 'Test Course',
       'year' => Carbon::now()->year,
       'user_id' => 10,
     ]);
@@ -32,7 +32,7 @@ class AssignatureTest extends TestCase {
     $this->assertDatabaseHas('assignatures', [
       'name' => 'Test Assignature',
       'description' => 'Test Description',
-      'curse' => 'Test Curse',
+      'course' => 'Test Course',
       'year' => Carbon::now()->year,
       'user_id' => 10,
     ]);
@@ -49,7 +49,7 @@ class AssignatureTest extends TestCase {
     $assignature = Assignature::factory()->create([
       'name' => 'Test Assignature',
       'description' => 'Test Description',
-      'curse' => 'Test Curse',
+      'course' => 'Test Course',
       'year' => Carbon::now()->year,
       'user_id' => 11,
     ]);
@@ -57,7 +57,7 @@ class AssignatureTest extends TestCase {
     $response = $this->put(route('assignatures.update', $assignature->id), [
       'name' => 'Test Assignature Updated',
       'description' => 'Test Description Updated',
-      'curse' => 'Test Curse Updated',
+      'course' => 'Test Course Updated',
       'year' => Carbon::now()->year,
       'user_id' => 11,
     ]);
@@ -66,7 +66,7 @@ class AssignatureTest extends TestCase {
     $this->assertDatabaseHas('assignatures', [
       'name' => 'Test Assignature Updated',
       'description' => 'Test Description Updated',
-      'curse' => 'Test Curse Updated',
+      'course' => 'Test Course Updated',
       'year' => Carbon::now()->year,
       'user_id' => 11,
     ]);
@@ -83,7 +83,7 @@ class AssignatureTest extends TestCase {
     $assignature = Assignature::factory()->create([
       'name' => 'Test Assignature Deleted',
       'description' => 'Test Description Deleted',
-      'curse' => 'Test Curse',
+      'course' => 'Test Course',
       'year' => Carbon::now()->year,
       'user_id' => 12,
     ]);
@@ -94,7 +94,7 @@ class AssignatureTest extends TestCase {
     $this->assertDatabaseMissing('assignatures', [
       'name' => 'Test Assignature Deleted',
       'description' => 'Test Description Deleted',
-      'curse' => 'Test Curse',
+      'course' => 'Test Course',
       'year' => Carbon::now()->year,
       'user_id' => 12,
     ]);
@@ -111,7 +111,7 @@ class AssignatureTest extends TestCase {
     $assignature = Assignature::factory()->create([
       'name' => 'Test Assignature Viewed',
       'description' => 'Test Description Viewed',
-      'curse' => 'Test Curse',
+      'course' => 'Test Course',
       'year' => Carbon::now()->year,
       'user_id' => 13,
     ]);
@@ -133,7 +133,7 @@ class AssignatureTest extends TestCase {
     $assignature = Assignature::factory()->create([
       'name' => 'Test Assignature Edited',
       'description' => 'Test Description Edited',
-      'curse' => 'Test Curse',
+      'course' => 'Test Course',
       'year' => Carbon::now()->year,
       'user_id' => 14,
     ]);

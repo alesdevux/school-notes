@@ -11,7 +11,7 @@ class Assignature extends Model {
   protected $fillable = [
     'name',
     'description',
-    'curse',
+    'course',
     'year',
     'user_id',
   ];

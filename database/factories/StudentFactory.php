@@ -15,7 +15,7 @@ class StudentFactory extends Factory {
    */
   public function definition() {
     return [
-      'course' => $this->faker->word,
+      'course' => $this->faker->randomElement(['1 ESO', '2 ESO', '3 ESO', '4 ESO', '1 BATX', '2 BATX']),
       'first_trimester' => $this->faker->randomFloat(1, 0, 10),
       'second_trimester' => $this->faker->randomFloat(1, 0, 10),
       'third_trimester' => $this->faker->randomFloat(1, 0, 10),
