@@ -31,7 +31,7 @@ import Table from '@/Components/Table.vue';
           </td>
           <td class="px-3 py-2 bg-slate-700">{{ assignature.name }}</td>
           <td class="px-3 py-2 whitespace-nowrap" v-if="!$page.props.user.is_professor">{{ assignature.user.second_name }}, {{ assignature.user.name }}</td>
-          <td class="px-3 py-2 text-center" v-if="$page.props.user.is_admin || $page.props.user.is_professor">{{ assignature.course.name }}</td>
+          <td class="px-3 py-2 text-center" v-if="$page.props.user.is_admin || $page.props.user.is_professor">{{ assignature.course }}</td>
           <td class="px-3 py-2 text-center">{{ assignature.year }}</td>
           <td class="px-3 py-2 whitespace-nowrap">{{ assignature.description }}</td>
         </tr>
