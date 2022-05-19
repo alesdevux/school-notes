@@ -2,6 +2,7 @@
 import AppLayout from '@/Layouts/AppLayout.vue';
 import LinkButton from '@/Components/LinkButton.vue';
 import Table from '@/Components/Table.vue';
+import { Link } from '@inertiajs/inertia-vue3';
 </script>
 
 <template>
@@ -27,9 +28,9 @@ import Table from '@/Components/Table.vue';
       <template #body>
         <tr v-for="assignature in assignatures" :key="assignature">
           <td class="px-3 py-2" v-if="isProfessor || isAdmin">
-            <a :href="route('assignatures.edit', { id: assignature.id })">
+            <Link :href="route('assignatures.edit', { id: assignature.id })">
               edit
-            </a>
+            </Link>
           </td>
           <td class="px-3 py-2 bg-slate-700">{{ assignature.name }}</td>
           <td class="px-3 py-2 whitespace-nowrap" v-if="!isProfessor">{{ assignature.user.second_name }}, {{ assignature.user.name }}</td>

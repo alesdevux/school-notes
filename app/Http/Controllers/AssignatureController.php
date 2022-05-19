@@ -7,6 +7,7 @@ use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class AssignatureController extends Controller {
@@ -87,8 +88,11 @@ class AssignatureController extends Controller {
    * @return \Illuminate\Http\Response
    */
   public function edit(Assignature $assignature) {
+    $professors = User::where('is_professor', true)->get();
+
     return Inertia::render('Assignatures/Edit', [
       'assignature' => $assignature,
+      'professors' => $professors,
     ]);
   }
 
@@ -104,13 +108,13 @@ class AssignatureController extends Controller {
       'name' => 'required',
       'description' => 'required',
       'course' => 'required',
-      'year' => 'required',
+      'year' => '',
       'user_id' => 'required',
     ]);
 
     $assignature->update($request->all());
 
-    return redirect()->route('assignatures.index');
+    return Redirect::route('assignatures.index');
   }
 
   /**

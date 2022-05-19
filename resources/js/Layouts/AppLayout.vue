@@ -294,13 +294,13 @@ const logout = () => {
 
       <!-- Page Heading -->
       <header v-if="$slots.header" class="bg-white shadow dark:bg-gray-800 dark:text-white">
-        <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8 flex justify-between h-24 items-center">
+        <div class="flex items-center justify-between h-24 px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <slot name="header" />
         </div>
       </header>
 
       <!-- Page Content -->
-      <main class="py-12 mx-auto overflow-hidden shadow-xl max-w-7xl sm:px-6 lg:px-8 sm:rounded-lg dark:text-white">
+      <main class="px-5 py-12 mx-auto overflow-hidden shadow-xl max-w-7xl sm:px-6 lg:px-8 sm:rounded-lg dark:text-white">
         <slot />
       </main>
     </div>

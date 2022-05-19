@@ -65,6 +65,7 @@ class DatabaseSeeder extends Seeder {
       'user_id' => User::factory()->create([
         'name' => 'Professor2',
         'email' => 'professor2@gmail.com',
+        'is_professor' => true,
       ])->id,
       'course' => '1 ESO',
     ]);
@@ -73,6 +74,7 @@ class DatabaseSeeder extends Seeder {
       'user_id' => User::factory()->create([
         'name' => 'Professor3',
         'email' => 'professor3@gmail.com',
+        'is_professor' => true,
       ])->id,
       'course' => '1 ESO',
     ]);
