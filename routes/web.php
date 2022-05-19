@@ -24,12 +24,5 @@ Route::middleware([
 ])->group(function () {
   Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
 
-  // Route::resource('assignatures', AssignatureController::class);
-  Route::get('/assignatures', [AssignatureController::class, 'index'])->name('assignatures.index');
-  Route::get('/assignatures/create', [AssignatureController::class, 'create'])->name('assignatures.create');
-  Route::post('/assignatures/store', [AssignatureController::class, 'store'])->name('assignatures.store');
-  Route::get('/assignatures/{assignature}', [AssignatureController::class, 'show'])->name('assignatures.show');
-  Route::get('/assignatures/{assignature}/edit', [AssignatureController::class, 'edit'])->name('assignatures.edit');
-  Route::put('/assignatures/{assignature}/update', [AssignatureController::class, 'update'])->name('assignatures.update');
-  Route::delete('/assignatures/{assignature}/delete', [AssignatureController::class, 'destroy'])->name('assignatures.destroy');
+  Route::resource('assignatures', AssignatureController::class);
 });

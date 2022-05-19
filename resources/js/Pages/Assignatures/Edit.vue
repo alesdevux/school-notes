@@ -6,12 +6,20 @@ import AppLayout from '@/Layouts/AppLayout.vue';
   <AppLayout title="Assignatures">
     <template #header>
       <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-white">
-        Edit assignatures
+        Edit assignature {{ assignature.name }}
       </h2>
     </template>
 
-    <div class="py-12 mx-auto overflow-hidden shadow-xl max-w-7xl sm:px-6 lg:px-8 sm:rounded-lg">
+    <p>
       Hi, configure edit assignature view
-    </div>
+    </p>
   </AppLayout>
 </template>
+
+<script>
+export default {
+  props: [
+    'assignature',
+  ],
+}
+</script>

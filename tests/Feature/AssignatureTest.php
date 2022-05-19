@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Testing\AssertableInertia as Assert;
 use Tests\TestCase;
 
 class AssignatureTest extends TestCase {
@@ -119,8 +120,9 @@ class AssignatureTest extends TestCase {
     $response = $this->get(route('assignatures.show', $assignature->id));
 
     $response->assertStatus(200);
-    $response->assertViewIs('assignatures.show');
-    $response->assertViewHas('assignature');
+    $response->assertInertia(fn (Assert $page) => 
+      $page->component('Assignatures/Show')
+    );
   }
 
   public function test_assignature_can_be_edit() {
@@ -141,7 +143,8 @@ class AssignatureTest extends TestCase {
     $response = $this->get(route('assignatures.edit', $assignature->id));
 
     $response->assertStatus(200);
-    $response->assertViewIs('assignatures.edit');
-    $response->assertViewHas('assignature');
+    $response->assertInertia(fn (Assert $page) => 
+      $page->component('Assignatures/Edit')
+    );
   }
 }

@@ -87,7 +87,9 @@ class AssignatureController extends Controller {
    * @return \Illuminate\Http\Response
    */
   public function edit(Assignature $assignature) {
-    return Inertia::render('Assignatures/Edit', $assignature);
+    return Inertia::render('Assignatures/Edit', [
+      'assignature' => $assignature,
+    ]);
   }
 
   /**

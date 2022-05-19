@@ -27,7 +27,9 @@ import Table from '@/Components/Table.vue';
       <template #body>
         <tr v-for="assignature in assignatures" :key="assignature">
           <td class="px-3 py-2" v-if="isProfessor || isAdmin">
-            <a href="">edit</a>
+            <a :href="route('assignatures.edit', { id: assignature.id })">
+              edit
+            </a>
           </td>
           <td class="px-3 py-2 bg-slate-700">{{ assignature.name }}</td>
           <td class="px-3 py-2 whitespace-nowrap" v-if="!isProfessor">{{ assignature.user.second_name }}, {{ assignature.user.name }}</td>
