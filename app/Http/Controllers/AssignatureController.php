@@ -109,7 +109,7 @@ class AssignatureController extends Controller {
       'description' => 'required',
       'course' => 'required',
       'year' => '',
-      'user_id' => 'required',
+      'user_id' => '',
     ]);
 
     $assignature->update($request->all());
