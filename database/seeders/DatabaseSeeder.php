@@ -19,54 +19,77 @@ class DatabaseSeeder extends Seeder {
    */
   public function run() {
     User::factory()->create([
-      'name' => 'admin',
+      'name' => 'Admin',
       'email' => 'admin@gmail.com',
       'is_admin' => true,
     ]);
     User::factory()->create([
-      'name' => 'professor1',
+      'name' => 'Professor1',
       'email' => 'professor1@gmail.com',
       'is_professor' => true,
     ]);
     User::factory()->create([
-      'name' => 'tutor1',
+      'name' => 'Tutor1',
       'email' => 'tutor1@gmail.com',
       'is_tutor' => true,
     ]);
     Student::factory()->create([
       'user_id' => User::factory()->create([
-        'name' => 'user1',
-        'email' => 'user1@gmail.com'
+        'name' => 'User1',
+        'email' => 'user1@gmail.com',
       ])->id,
+      'course' => '1 ESO',
     ]);
     Student::factory()->create([
       'user_id' => User::factory()->create([
-        'name' => 'user2',
-        'email' => 'user2@gmail.com'
+        'name' => 'User2',
+        'email' => 'user2@gmail.com',
       ])->id,
+      'course' => '1 BATX',
+    ]);
+    Student::factory()->create([
+      'user_id' => User::factory()->create([
+        'name' => 'User3',
+        'email' => 'user3@gmail.com',
+      ])->id,
+      'course' => '1 ESO',
     ]);
 
     Assignature::factory()->create([
       'name' => 'Maths',
-      'user_id' => User::where('name', 'professor1')->first()->id,
+      'user_id' => User::where('name', 'Professor1')->first()->id,
+      'course' => '1 ESO',
     ]);
     Assignature::factory()->create([
       'name' => 'English',
       'user_id' => User::factory()->create([
-        'name' => 'professor2',
+        'name' => 'Professor2',
         'email' => 'professor2@gmail.com',
       ])->id,
+      'course' => '1 ESO',
     ]);
     Assignature::factory()->create([
       'name' => 'Physics',
       'user_id' => User::factory()->create([
-        'name' => 'professor3',
+        'name' => 'Professor3',
         'email' => 'professor3@gmail.com',
       ])->id,
+      'course' => '1 ESO',
     ]);
     Assignature::factory()->create([
       'name' => 'Biology',
-      'user_id' => User::where('name', 'professor1')->first()->id,
+      'user_id' => User::where('name', 'Professor1')->first()->id,
+      'course' => '1 ESO',
+    ]);
+    Assignature::factory()->create([
+      'name' => 'Maths',
+      'user_id' => User::where('name', 'Professor1')->first()->id,
+      'course' => '1 BATX',
+    ]);
+    Assignature::factory()->create([
+      'name' => 'Biology',
+      'user_id' => User::where('name', 'Professor3')->first()->id,
+      'course' => '1 BATX',
     ]);
 
     Exam::factory()->create([
