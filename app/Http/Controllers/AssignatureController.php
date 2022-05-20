@@ -17,27 +17,33 @@ class AssignatureController extends Controller {
    * @return \Illuminate\Http\Response
    */
   public function index() {
-    $is_admin = User::find(Auth::user()->id)->is_admin;
-    $is_professor = User::find(Auth::user()->id)->is_professor;
-    $is_tutor = User::find(Auth::user()->id)->is_tutor;
-    $is_student = !$is_admin && !$is_professor && !$is_tutor;
+    $user = User::find(Auth::user()->id);
+    
+    $isAdmin = $user->isAdmin();
+    $isProfessor = $user->isProfessor();
+    $isTutor = $user->isTutor();
+    $isStudent = $user->isStudent();
 
-    if($is_admin) {
+    if($isAdmin) {
       $assignatures = Assignature::with('user')->get();
     }
-    if($is_professor) {
+    if($isProfessor) {
       $assignatures = Assignature::where('user_id', Auth::user()->id)->with('user')->get();
     }
-    if($is_tutor) {
+    if($isTutor) {
       $assignatures = Assignature::where('user_id', Auth::user()->id)->with('user')->get();
     }
-    if($is_student) {
+    if($isStudent) {
       $student = Student::where('user_id', Auth::user()->id)->first();
       $studentCourse = $student->course;
       $assignatures = Assignature::where('course', $studentCourse)->with('user')->get();
     }
     return Inertia::render('Assignatures/Index', [
       'assignatures' => $assignatures,
+      'isAdmin' => $isAdmin,
+      'isProfessor' => $isProfessor,
+      'isTutor' => $isTutor,
+      'isStudent' => $isStudent,
     ]);
   }
 

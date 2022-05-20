@@ -48,20 +48,10 @@ import { Link } from '@inertiajs/inertia-vue3';
 export default {
   props: [
     'assignatures',
+    'isAdmin',
+    'isProfessor',
+    'isTutor',
+    'isStudent'
   ],
-  computed: {
-    'isAdmin': function() {
-      return this.$page.props.user.is_admin;
-    },
-    'isProfessor': function() {
-      return this.$page.props.user.is_professor;
-    },
-    'isTutor': function() {
-      return this.$page.props.user.is_tutor;
-    },
-    'isStudent': function() {
-      return !this.$page.props.user.is_admin && !this.$page.props.user.is_professor && !this.$page.props.user.is_tutor;
-    },
-  },
 }
 </script>

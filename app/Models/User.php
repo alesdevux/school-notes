@@ -66,6 +66,18 @@ class User extends Authenticatable {
     return $this->is_admin;
   }
 
+  public function isProfessor() {
+    return $this->is_professor;
+  }
+
+  public function isTutor() {
+    return $this->is_tutor;
+  }
+
+  public function isStudent() {
+    return !$this->isAdmin() && !$this->isProfessor() && !$this->isTutor();
+  }
+
   public function assignatures() {
     return $this->hasMany(Assignature::class);
   }
