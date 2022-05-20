@@ -63,10 +63,7 @@ class User extends Authenticatable {
   ];
 
   public function isAdmin() {
-    if ($this->is_admin) {
-      return true;
-    }
-    return false;
+    return $this->is_admin;
   }
 
   public function assignatures() {
