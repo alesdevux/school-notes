@@ -14,15 +14,18 @@ use Tests\TestCase;
 class AssignatureTest extends TestCase {
   use RefreshDatabase;
 
-  public function test_assignature_can_be_created() {
+  public function test_assignature_can_be_created_if_user_is_admin() {
     $this->withoutExceptionHandling();
 
-    $user = User::factory()->create([ 'id' => 10 ]);
+    $user = User::factory()->create([
+      'id' => 10,
+      'is_admin' => true,
+    ]);
     $login = Auth::loginUsingId($user->id);
     $this->actingAs($login);
 
     $response = $this->post(route('assignatures.store'), [
-      'name' => 'Test Assignature',
+      'name' => 'Test Create Assignature Admin',
       'description' => 'Test Description',
       'course' => 'Test Course',
       'year' => Carbon::now()->year,
@@ -31,7 +34,7 @@ class AssignatureTest extends TestCase {
 
     $response->assertStatus(302);
     $this->assertDatabaseHas('assignatures', [
-      'name' => 'Test Assignature',
+      'name' => 'Test Create Assignature Admin',
       'description' => 'Test Description',
       'course' => 'Test Course',
       'year' => Carbon::now()->year,
@@ -40,49 +43,47 @@ class AssignatureTest extends TestCase {
     $response->assertRedirect('/assignatures');
   }
 
-  /* public function test_assignature_can_be_updated() {
+  public function test_assignature_can_not_be_created_if_user_is_student() {
     $this->withoutExceptionHandling();
 
-    $user = User::factory()->create([ 'id' => 11 ]);
+    $user = User::factory()->create([
+      'id' => 9,
+      'is_admin' => false,
+      'is_tutor' => false,
+      'is_professor' => false,
+    ]);
     $login = Auth::loginUsingId($user->id);
     $this->actingAs($login);
 
-    $assignature = Assignature::factory()->create([
-      'name' => 'Test Assignature',
+    $this->post(route('assignatures.store'), [
+      'name' => 'Test Create Assignature Student',
       'description' => 'Test Description',
       'course' => 'Test Course',
       'year' => Carbon::now()->year,
-      'user_id' => 11,
+      'user_id' => 9,
     ]);
-
-    $response = $this->put(route('assignatures.update', $assignature->id), [
-      'name' => 'Test Assignature Updated',
-      'description' => 'Test Description Updated',
-      'course' => 'Test Course Updated',
+    
+    $this->assertDatabaseMissing('assignatures', [
+      'name' => 'Test Create Assignature Student',
+      'description' => 'Test Description',
+      'course' => 'Test Course',
       'year' => Carbon::now()->year,
-      'user_id' => 11,
+      'user_id' => 9,
     ]);
+  }
 
-    $response->assertStatus(302);
-    $this->assertDatabaseHas('assignatures', [
-      'name' => 'Test Assignature Updated',
-      'description' => 'Test Description Updated',
-      'course' => 'Test Course Updated',
-      'year' => Carbon::now()->year,
-      'user_id' => 11,
-    ]);
-    $response->assertRedirect('/assignatures');
-  } */
-
-  public function test_assignature_can_be_deleted() {
+  public function test_assignature_can_be_deleted_if_user_is_admin() {
     $this->withoutExceptionHandling();
 
-    $user = User::factory()->create([ 'id' => 12 ]);
+    $user = User::factory()->create([
+      'id' => 12,
+      'is_admin' => true,
+    ]);
     $login = Auth::loginUsingId($user->id);
     $this->actingAs($login);
 
     $assignature = Assignature::factory()->create([
-      'name' => 'Test Assignature Deleted',
+      'name' => 'Test Admin Assignature Deleted',
       'description' => 'Test Description Deleted',
       'course' => 'Test Course',
       'year' => Carbon::now()->year,
@@ -93,13 +94,44 @@ class AssignatureTest extends TestCase {
 
     $response->assertStatus(302);
     $this->assertDatabaseMissing('assignatures', [
-      'name' => 'Test Assignature Deleted',
+      'name' => 'Test Admin Assignature Deleted',
       'description' => 'Test Description Deleted',
       'course' => 'Test Course',
       'year' => Carbon::now()->year,
       'user_id' => 12,
     ]);
     $response->assertRedirect('/assignatures');
+  }
+
+  public function test_assignature_can_not_be_deleted_if_user_is_student() {
+    $this->withoutExceptionHandling();
+
+    $user = User::factory()->create([
+      'id' => 11,
+      'is_admin' => false,
+      'is_tutor' => false,
+      'is_professor' => false,
+    ]);
+    $login = Auth::loginUsingId($user->id);
+    $this->actingAs($login);
+
+    $assignature = Assignature::factory()->create([
+      'name' => 'Test Student Assignature Deleted',
+      'description' => 'Test Description Deleted',
+      'course' => 'Test Course',
+      'year' => Carbon::now()->year,
+      'user_id' => 11,
+    ]);
+
+    $this->delete(route('assignatures.destroy', $assignature->id));
+    
+    $this->assertDatabaseHas('assignatures', [
+      'name' => 'Test Student Assignature Deleted',
+      'description' => 'Test Description Deleted',
+      'course' => 'Test Course',
+      'year' => Carbon::now()->year,
+      'user_id' => 11,
+    ]);
   }
 
   public function test_assignature_can_be_viewed() {
@@ -125,10 +157,13 @@ class AssignatureTest extends TestCase {
     );
   }
 
-  public function test_assignature_can_be_edit() {
+  public function test_assignature_can_be_edit_if_user_is_admin() {
     $this->withoutExceptionHandling();
 
-    $user = User::factory()->create([ 'id' => 14 ]);
+    $user = User::factory()->create([
+      'id' => 14,
+      'is_admin' => true,
+    ]);
     $login = Auth::loginUsingId($user->id);
     $this->actingAs($login);
 
@@ -148,10 +183,44 @@ class AssignatureTest extends TestCase {
     );
   }
 
-  public function test_assignature_can_be_updated() {
+  public function test_assignature_can_not_be_edit_if_user_is_student() {
     $this->withoutExceptionHandling();
 
-    $user = User::factory()->create([ 'id' => 15 ]);
+    $user = User::factory()->create([
+      'id' => 15,
+      'is_admin' => false,
+      'is_tutor' => false,
+      'is_professor' => false,
+    ]);
+    $login = Auth::loginUsingId($user->id);
+    $this->actingAs($login);
+
+    $assignature = Assignature::factory()->create([
+      'name' => 'Test Assignature Edited',
+      'description' => 'Test Description Edited',
+      'course' => 'Test Course',
+      'year' => Carbon::now()->year,
+      'user_id' => 15,
+    ]);
+
+    $this->get(route('assignatures.edit', $assignature->id));
+    
+    $this->assertDatabaseHas('assignatures', [
+      'name' => 'Test Assignature Edited',
+      'description' => 'Test Description Edited',
+      'course' => 'Test Course',
+      'year' => Carbon::now()->year,
+      'user_id' => 15,
+    ]);
+  }
+
+  public function test_assignature_can_be_updated_if_user_is_admin() {
+    $this->withoutExceptionHandling();
+
+    $user = User::factory()->create([
+      'id' => 15,
+      'is_admin' => true,
+    ]);
     $login = Auth::loginUsingId($user->id);
     $this->actingAs($login);
 
@@ -180,5 +249,42 @@ class AssignatureTest extends TestCase {
       'user_id' => 15,
     ]);
     $response->assertRedirect('/assignatures');
+  }
+
+  public function test_assignature_can_not_be_updated_if_user_is_student() {
+    $this->withoutExceptionHandling();
+
+    $user = User::factory()->create([
+      'id' => 15,
+      'is_admin' => false,
+      'is_tutor' => false,
+      'is_professor' => false,
+    ]);
+    $login = Auth::loginUsingId($user->id);
+    $this->actingAs($login);
+
+    $assignature = Assignature::factory()->create([
+      'name' => 'Test Student Assignature Updated',
+      'description' => 'Test Description Updated',
+      'course' => '1 ESO',
+      'year' => Carbon::now()->year,
+      'user_id' => 15,
+    ]);
+
+    $this->patch(route('assignatures.update', $assignature->id), [
+      'name' => 'Hola Test Student Assignature Updated Hola',
+      'description' => 'Hola Test Description Updated',
+      'course' => '1 BATX',
+      'year' => Carbon::now()->year,
+      'user_id' => 15,
+    ]);
+    
+    $this->assertDatabaseHas('assignatures', [
+      'name' => 'Test Student Assignature Updated',
+      'description' => 'Test Description Updated',
+      'course' => '1 ESO',
+      'year' => Carbon::now()->year,
+      'user_id' => 15,
+    ]);
   }
 }

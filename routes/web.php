@@ -24,5 +24,9 @@ Route::middleware([
 ])->group(function () {
   Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
 
-  Route::resource('assignatures', AssignatureController::class);
+  Route::middleware('isAdmin')->group(function () {
+    Route::resource('assignatures', AssignatureController::class)->except(['index', 'show']);
+  });
+
+  Route::resource('assignatures', AssignatureController::class)->only(['index', 'show']);
 });
