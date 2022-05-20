@@ -6,7 +6,6 @@ use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Inertia\Inertia;
 
 class IsAdmin {
   /**
@@ -20,6 +19,6 @@ class IsAdmin {
     if(User::find(Auth::user()->id)->isAdmin()) {
       return $next($request);
     }
-    return Inertia::render('Home/Index');
+    return redirect()->back();
   }
 }
