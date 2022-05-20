@@ -55,14 +55,15 @@ class AssignatureTest extends TestCase {
     $login = Auth::loginUsingId($user->id);
     $this->actingAs($login);
 
-    $this->post(route('assignatures.store'), [
+    $response = $this->post(route('assignatures.store'), [
       'name' => 'Test Create Assignature Student',
       'description' => 'Test Description',
       'course' => 'Test Course',
       'year' => Carbon::now()->year,
       'user_id' => 9,
     ]);
-    
+
+    $response->assertStatus(302);
     $this->assertDatabaseMissing('assignatures', [
       'name' => 'Test Create Assignature Student',
       'description' => 'Test Description',
@@ -123,8 +124,9 @@ class AssignatureTest extends TestCase {
       'user_id' => 11,
     ]);
 
-    $this->delete(route('assignatures.destroy', $assignature->id));
-    
+    $response = $this->delete(route('assignatures.destroy', $assignature->id));
+
+    $response->assertStatus(302);
     $this->assertDatabaseHas('assignatures', [
       'name' => 'Test Student Assignature Deleted',
       'description' => 'Test Description Deleted',
@@ -203,8 +205,9 @@ class AssignatureTest extends TestCase {
       'user_id' => 15,
     ]);
 
-    $this->get(route('assignatures.edit', $assignature->id));
-    
+    $response = $this->get(route('assignatures.edit', $assignature->id));
+
+    $response->assertStatus(302);
     $this->assertDatabaseHas('assignatures', [
       'name' => 'Test Assignature Edited',
       'description' => 'Test Description Edited',
@@ -271,14 +274,15 @@ class AssignatureTest extends TestCase {
       'user_id' => 15,
     ]);
 
-    $this->patch(route('assignatures.update', $assignature->id), [
+    $response = $this->patch(route('assignatures.update', $assignature->id), [
       'name' => 'Hola Test Student Assignature Updated Hola',
       'description' => 'Hola Test Description Updated',
       'course' => '1 BATX',
       'year' => Carbon::now()->year,
       'user_id' => 15,
     ]);
-    
+
+    $response->assertStatus(302);
     $this->assertDatabaseHas('assignatures', [
       'name' => 'Test Student Assignature Updated',
       'description' => 'Test Description Updated',
