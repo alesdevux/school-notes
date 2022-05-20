@@ -29,7 +29,7 @@ import Button from '../../Components/Button.vue';
         </div>
       </div>
 
-      <div class="flex mb-6 -mx-3 lex-wrap">
+      <div class="flex mb-6 -mx-3 lex-wrap" v-if="$page.props.user.is_admin">
         <div class="w-full px-3">
           <label class="block mb-2 text-xs font-bold tracking-wide text-gray-200 uppercase" for="description">
             Professor

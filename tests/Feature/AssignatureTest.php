@@ -43,6 +43,34 @@ class AssignatureTest extends TestCase {
     $response->assertRedirect('/assignatures');
   }
 
+  public function test_assignature_can_not_be_created_if_user_is_professor() {
+    $this->withoutExceptionHandling();
+
+    $user = User::factory()->create([
+      'id' => 18,
+      'is_professor' => true,
+    ]);
+    $login = Auth::loginUsingId($user->id);
+    $this->actingAs($login);
+
+    $response = $this->post(route('assignatures.store'), [
+      'name' => 'Test Create Assignature Professor',
+      'description' => 'Test Description',
+      'course' => 'Test Course',
+      'year' => Carbon::now()->year,
+      'user_id' => 18,
+    ]);
+
+    $response->assertStatus(302);
+    $this->assertDatabaseMissing('assignatures', [
+      'name' => 'Test Create Assignature Professor',
+      'description' => 'Test Description',
+      'course' => 'Test Course',
+      'year' => Carbon::now()->year,
+      'user_id' => 18,
+    ]);
+  }
+
   public function test_assignature_can_not_be_created_if_user_is_student() {
     $this->withoutExceptionHandling();
 
@@ -102,6 +130,36 @@ class AssignatureTest extends TestCase {
       'user_id' => 12,
     ]);
     $response->assertRedirect('/assignatures');
+  }
+
+  public function test_assignature_can_not_be_deleted_if_user_is_professor() {
+    $this->withoutExceptionHandling();
+
+    $user = User::factory()->create([
+      'id' => 19,
+      'is_professor' => true,
+    ]);
+    $login = Auth::loginUsingId($user->id);
+    $this->actingAs($login);
+
+    $assignature = Assignature::factory()->create([
+      'name' => 'Test Professor Assignature Deleted',
+      'description' => 'Test Description Deleted',
+      'course' => 'Test Course',
+      'year' => Carbon::now()->year,
+      'user_id' => 19,
+    ]);
+
+    $response = $this->delete(route('assignatures.destroy', $assignature->id));
+
+    $response->assertStatus(302);
+    $this->assertDatabaseHas('assignatures', [
+      'name' => 'Test Professor Assignature Deleted',
+      'description' => 'Test Description Deleted',
+      'course' => 'Test Course',
+      'year' => Carbon::now()->year,
+      'user_id' => 19,
+    ]);
   }
 
   public function test_assignature_can_not_be_deleted_if_user_is_student() {
@@ -185,6 +243,32 @@ class AssignatureTest extends TestCase {
     );
   }
 
+  public function test_assignature_can_be_edit_if_user_is_professor() {
+    $this->withoutExceptionHandling();
+
+    $user = User::factory()->create([
+      'id' => 20,
+      'is_professor' => true,
+    ]);
+    $login = Auth::loginUsingId($user->id);
+    $this->actingAs($login);
+
+    $assignature = Assignature::factory()->create([
+      'name' => 'Test Professor Assignature Edited',
+      'description' => 'Test Description Edited',
+      'course' => 'Test Course',
+      'year' => Carbon::now()->year,
+      'user_id' => 20,
+    ]);
+
+    $response = $this->get(route('assignatures.edit', $assignature->id));
+
+    $response->assertStatus(200);
+    $response->assertInertia(fn (Assert $page) => 
+      $page->component('Assignatures/Edit')
+    );
+  }
+
   public function test_assignature_can_not_be_edit_if_user_is_student() {
     $this->withoutExceptionHandling();
 
@@ -221,7 +305,7 @@ class AssignatureTest extends TestCase {
     $this->withoutExceptionHandling();
 
     $user = User::factory()->create([
-      'id' => 15,
+      'id' => 16,
       'is_admin' => true,
     ]);
     $login = Auth::loginUsingId($user->id);
@@ -232,7 +316,7 @@ class AssignatureTest extends TestCase {
       'description' => 'Test Description Updated',
       'course' => '1 ESO',
       'year' => Carbon::now()->year,
-      'user_id' => 15,
+      'user_id' => 16,
     ]);
 
     $response = $this->patch(route('assignatures.update', $assignature->id), [
@@ -240,7 +324,7 @@ class AssignatureTest extends TestCase {
       'description' => 'Hola Test Description Updated',
       'course' => '1 BATX',
       'year' => Carbon::now()->year,
-      'user_id' => 15,
+      'user_id' => 16,
     ]);
 
     $response->assertStatus(302);
@@ -249,7 +333,44 @@ class AssignatureTest extends TestCase {
       'description' => 'Hola Test Description Updated',
       'course' => '1 BATX',
       'year' => Carbon::now()->year,
-      'user_id' => 15,
+      'user_id' => 16,
+    ]);
+    $response->assertRedirect('/assignatures');
+  }
+
+  public function test_assignature_can_be_updated_if_user_is_professor() {
+    $this->withoutExceptionHandling();
+
+    $user = User::factory()->create([
+      'id' => 21,
+      'is_professor' => true,
+    ]);
+    $login = Auth::loginUsingId($user->id);
+    $this->actingAs($login);
+
+    $assignature = Assignature::factory()->create([
+      'name' => 'Test Professor Assignature Updated',
+      'description' => 'Test Description Updated',
+      'course' => '1 ESO',
+      'year' => Carbon::now()->year,
+      'user_id' => 21,
+    ]);
+
+    $response = $this->patch(route('assignatures.update', $assignature->id), [
+      'name' => 'Hola Test Professor Assignature Updated Hola',
+      'description' => 'Hola Test Description Updated',
+      'course' => '1 BATX',
+      'year' => Carbon::now()->year,
+      'user_id' => 21,
+    ]);
+
+    $response->assertStatus(302);
+    $this->assertDatabaseHas('assignatures', [
+      'name' => 'Hola Test Professor Assignature Updated Hola',
+      'description' => 'Hola Test Description Updated',
+      'course' => '1 BATX',
+      'year' => Carbon::now()->year,
+      'user_id' => 21,
     ]);
     $response->assertRedirect('/assignatures');
   }
@@ -258,7 +379,7 @@ class AssignatureTest extends TestCase {
     $this->withoutExceptionHandling();
 
     $user = User::factory()->create([
-      'id' => 15,
+      'id' => 17,
       'is_admin' => false,
       'is_tutor' => false,
       'is_professor' => false,
@@ -271,7 +392,7 @@ class AssignatureTest extends TestCase {
       'description' => 'Test Description Updated',
       'course' => '1 ESO',
       'year' => Carbon::now()->year,
-      'user_id' => 15,
+      'user_id' => 17,
     ]);
 
     $response = $this->patch(route('assignatures.update', $assignature->id), [
@@ -279,7 +400,7 @@ class AssignatureTest extends TestCase {
       'description' => 'Hola Test Description Updated',
       'course' => '1 BATX',
       'year' => Carbon::now()->year,
-      'user_id' => 15,
+      'user_id' => 17,
     ]);
 
     $response->assertStatus(302);
@@ -288,7 +409,7 @@ class AssignatureTest extends TestCase {
       'description' => 'Test Description Updated',
       'course' => '1 ESO',
       'year' => Carbon::now()->year,
-      'user_id' => 15,
+      'user_id' => 17,
     ]);
   }
 }

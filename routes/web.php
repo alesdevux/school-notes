@@ -25,7 +25,11 @@ Route::middleware([
   Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
 
   Route::middleware('isAdmin')->group(function () {
-    Route::resource('assignatures', AssignatureController::class)->except(['index', 'show']);
+    Route::resource('assignatures', AssignatureController::class)->except(['index', 'show', 'edit', 'update']);
+  });
+
+  Route::middleware('canEdit')->group(function () {
+    Route::resource('assignatures', AssignatureController::class)->only(['edit', 'update']);
   });
 
   Route::resource('assignatures', AssignatureController::class)->only(['index', 'show']);
