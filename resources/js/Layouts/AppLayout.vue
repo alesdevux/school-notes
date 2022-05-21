@@ -300,7 +300,7 @@ const logout = () => {
       </header>
 
       <!-- Page Content -->
-      <main class="px-5 py-12 mx-auto overflow-hidden shadow-xl max-w-7xl sm:px-6 lg:px-8 sm:rounded-lg dark:text-white">
+      <main class="px-5 py-12 mx-auto overflow-hidden max-w-7xl sm:px-6 lg:px-8 sm:rounded-lg dark:text-white">
         <slot />
       </main>
     </div>

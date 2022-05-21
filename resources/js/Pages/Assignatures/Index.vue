@@ -32,7 +32,7 @@ import { Link } from '@inertiajs/inertia-vue3';
               edit
             </Link>
           </td>
-          <td class="px-3 py-2 bg-slate-700">{{ assignature.name }}</td>
+          <td class="px-3 py-2 bg-gray-200 dark:bg-slate-700">{{ assignature.name }}</td>
           <td class="px-3 py-2 whitespace-nowrap" v-if="!isProfessor">{{ assignature.user.second_name }}, {{ assignature.user.name }}</td>
           <td class="px-3 py-2 text-center" v-if="isAdmin || isProfessor">{{ assignature.course }}</td>
           <td class="px-3 py-2 text-center">{{ assignature.year }}</td>
