@@ -14,24 +14,24 @@ import Label from '../../Components/Label.vue';
     </template>
 
     <form method="POST" @submit.prevent="submit" class="md:mx-auto md:max-w-lg">
-      <Label name="name">
-        <input v-model="name" id="name" name="name" type="text" />
+      <Label name="name" label="assignature">
+        <input v-model="name" name="name" type="text" />
       </Label>
 
       <Label v-if="$page.props.user.is_admin" name="professor">
-        <select v-model="professor_id">
+        <select v-model="professor_id" name="professor">
           <option v-for="professor in professors" :value="professor.id">{{ professor.second_name }}, {{ professor.name }}</option>
         </select>
       </Label>
 
       <Label name="course">
-        <select v-model="course">
+        <select v-model="course" name="course">
           <option v-for="course in optionsCourse" :value="course">{{ course }}</option>
         </select>
       </Label>
 
       <Label name="description">
-        <textarea v-model="description" id="description" name="description" type="text"></textarea>
+        <textarea v-model="description" name="description" type="text"></textarea>
       </Label>
 
       <div class="flex justify-end">
