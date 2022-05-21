@@ -2,6 +2,7 @@
 import AppLayout from '@/Layouts/AppLayout.vue';
 import { Inertia } from '@inertiajs/inertia';
 import Button from '../../Components/Button.vue';
+import Label from '../../Components/Label.vue';
 </script>
 
 <template>
@@ -13,57 +14,25 @@ import Button from '../../Components/Button.vue';
     </template>
 
     <form method="POST" @submit.prevent="submit" class="md:mx-auto md:max-w-lg">
+      <Label name="name">
+        <input v-model="name" id="name" name="name" type="text" />
+      </Label>
 
-      <div class="flex flex-wrap mb-6 -mx-3">
-        <div class="w-full px-3">
-          <label class="block mb-2 text-xs font-bold tracking-wide text-gray-200 uppercase" for="name">
-            Name
-          </label>
-          <input
-            class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
-            id="name"
-            name="name"
-            type="text"
-            v-model="name"
-          />
-        </div>
-      </div>
+      <Label v-if="$page.props.user.is_admin" name="professor">
+        <select v-model="professor_id">
+          <option v-for="professor in professors" :value="professor.id">{{ professor.second_name }}, {{ professor.name }}</option>
+        </select>
+      </Label>
 
-      <div class="flex mb-6 -mx-3 lex-wrap" v-if="$page.props.user.is_admin">
-        <div class="w-full px-3">
-          <label class="block mb-2 text-xs font-bold tracking-wide text-gray-200 uppercase" for="description">
-            Professor
-          </label>
-          <select v-model="professor_id" class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500">
-            <option v-for="professor in professors" :value="professor.id">{{ professor.second_name }}, {{ professor.name }}</option>
-          </select>
-        </div>
-      </div>
+      <Label name="course">
+        <select v-model="course">
+          <option v-for="course in optionsCourse" :value="course">{{ course }}</option>
+        </select>
+      </Label>
 
-      <div class="flex mb-6 -mx-3 lex-wrap">
-        <div class="w-full px-3">
-          <label class="block mb-2 text-xs font-bold tracking-wide text-gray-200 uppercase" for="description">
-            Course
-          </label>
-          <select v-model="course" class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500">
-            <option v-for="course in optionsCourse" :value="course">{{ course }}</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="flex flex-wrap mb-6 -mx-3">
-        <div class="w-full px-3">
-          <label class="block mb-2 text-xs font-bold tracking-wide text-gray-200 uppercase" for="description">
-            Description
-          </label>
-          <textarea
-            class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
-            id="description"
-            name="description"
-            v-model="description"
-          ></textarea>
-        </div>
-      </div>
+      <Label name="description">
+        <textarea v-model="description" id="description" name="description" type="text"></textarea>
+      </Label>
 
       <div class="flex justify-end">
         <Button type="submit">

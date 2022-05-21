@@ -9,9 +9,8 @@ import AppLayout from '@/Layouts/AppLayout.vue';
         Create assignature
       </h2>
     </template>
-
-    <div class="py-12 mx-auto overflow-hidden shadow-xl max-w-7xl sm:px-6 lg:px-8 sm:rounded-lg">
-      Hi, configure create assignatures form view
-    </div>
+    
+    Hi, configure create assignatures form view
+      
   </AppLayout>
 </template>

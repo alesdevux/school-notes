@@ -23,7 +23,7 @@ export default {
         : 'bg-gray-500 hover:bg-gray-700';
     },
     mergeClasses() {
-      return `flex px-6 py-2 font-bold rounded-md w-fit ${this.class} ${this.classes}`;
+      return `flex px-6 py-2 text-white font-bold rounded-md w-fit ${this.class} ${this.classes}`;
     },
   },
 };
