@@ -9,9 +9,8 @@ import AppLayout from '@/Layouts/AppLayout.vue';
         Assignatures
       </h2>
     </template>
-
-    <div class="py-12 mx-auto overflow-hidden shadow-xl max-w-7xl sm:px-6 lg:px-8 sm:rounded-lg">
-      Hi, configure show assignatures view
-    </div>
+    
+    Hi, configure show assignatures view
+    
   </AppLayout>
 </template>
